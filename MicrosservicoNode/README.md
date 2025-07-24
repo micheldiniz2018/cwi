@@ -13,5 +13,14 @@ API construída com Node.js, Express e Docker seguindo princípios SOLID, com ro
 ### 1. Clonar o repositório
 
 ```bash
-git clone [seu-repositorio]
-cd node-solid-docker
+git clone https://github.com/micheldiniz2018/cwi
+cd TesteCWI\MicroservicoNode
+
+2. Instalar dependências
+npm install
+
+3. Ambiente de desenvolvimento
+npm run dev
+
+4. Produção com Docker
+docker-compose up --build

@@ -15,21 +15,25 @@ cd ProjetoCWI
 Copie o arquivo .env.example para .env:
 cp .env.example .env
 Edite o .env e configure:
-EXTERNAL_HEALTH_CHECK_URL=http://localhost:3000/health
-APP_URL=http://localhost:8000
+EXTERNAL_HEALTH_CHECK_URL=host.docker.internal:3000/health
+APP_URL=host.docker.internal:8000
 
 3. Instale as dependências
 docker-compose run --rm composer install
 
 4. Inicie os containers
 docker-compose up -d
+docker-compose exec laravel_app php artisan migrate
+
+5. Ver as rotas disponíveis
+docker-compose exec laravel_app php artisan route:list
 
 🌐 Rotas da API
-POST /api/health
+GET /api/health
 Verifica o status da API externa configurada.
 
 Requisição:
-curl -X POST http://localhost:8000/api/health \
+curl -X GET http://localhost:8000/api/health \
   -H "Content-Type: application/json"
 Respostas:
 Sucesso (API externa saudável):
